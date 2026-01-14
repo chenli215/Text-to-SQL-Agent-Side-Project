@@ -11,7 +11,7 @@ A Streamlit app that converts natural language questions into **BigQuery Standar
 
 ## 1) Features
 
-### ✅ What it does
+### What it does
 - Generate **ONE** BigQuery Standard SQL query from English questions
 - Enforce:
   - SQL-only output (no markdown, no semicolon)
@@ -26,23 +26,18 @@ A Streamlit app that converts natural language questions into **BigQuery Standar
   - block queries above scan cap
   - optional **one-shot** auto-fix if BigQuery errors
 
-### ❌ Not in scope (yet)
-- Full semantic parsing of arbitrary dimensions (beyond configured metric/join hints)
-- Multiple-definition metric selection (e.g., net GMV vs booked GMV)
-- Results summary / narrative insights (optional future module)
-
 ---
 
 ## 2) Repo Structure
 
-.
-├── app.py # Streamlit UI + orchestration
-├── agent_sql.py # LLM: generate_sql + fix_sql
-├── assumptions.py # infer_assumptions(question) -> list[str]
-├── bq_runner.py # dry-run / execute / one-shot fix
-├── clients.py # get_bq_client(), get_openai_client()
-├── guard.py # SQLGuard: allowlist + safety checks
-├── metric_cards.py # render_metric_cards_simplified()
-├── metrics.py # METRICS + QUALIFIED_METRICS + intent matching + prompt renderer
-├── schema_cache.py # INFORMATION_SCHEMA fetch + local json cache + allowlist builder
-└── semantic.py # SEMANTIC_RULES + normalize_sql + looks_incomplete_sql
+
+- app.py # Streamlit UI + orchestration
+- agent_sql.py # LLM: generate_sql + fix_sql
+- assumptions.py # infer_assumptions(question) -> list[str]
+- bq_runner.py # dry-run / execute / one-shot fix
+- clients.py # get_bq_client(), get_openai_client()
+- guard.py # SQLGuard: allowlist + safety checks
+- metric_cards.py # render_metric_cards_simplified()
+- metrics.py # METRICS + QUALIFIED_METRICS + intent matching + prompt renderer
+- schema_cache.py # INFORMATION_SCHEMA fetch + local json cache + allowlist builder
+- semantic.py # SEMANTIC_RULES + normalize_sql + looks_incomplete_sql
